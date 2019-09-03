@@ -63,6 +63,14 @@ def levelOrderTraversal(root):
     if n.right:
       q.append(n.right)
 
+def LowestCommonAncestral(root,v1,v2):
+  if(root.data<v1) and (root.data<v2):
+    LowestCommonAncestral(root.right,v1,v2)
+  elif(root.data>v1) and (root.data>v2):
+    LowestCommonAncestral(root.left,v1,v2)
+  else:
+    return root
+
 
 tree=BST()
 n=int(input())
@@ -71,3 +79,5 @@ for i in range(n):
   tree.create(a[i])
 h= heightOfTree(tree.root)
 levelOrderTraversal(tree.root)
+a=LowestCommonAncestral(tree.root,1,7)
+print(a.data)
