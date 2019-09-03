@@ -45,9 +45,29 @@ def preOrder(root):
     preOrder(root.left)
     preOrder(root.right)
 
+def heightOfTree(root):
+  if root:
+    return 1 + max(heightOfTree(root.left),heightOfTree(root.right))
+  else:
+    return -1
+
+def levelOrderTraversal(root):
+  if root==None:
+    return
+  q=[root]
+  while (len(q)>0):
+    n=q.pop(0)
+    print(n.data)
+    if n.left:
+      q.append(n.left)
+    if n.right:
+      q.append(n.right)
+
 
 tree=BST()
 n=int(input())
 a=[int(i) for i in input().split()]
 for i in range(n):
   tree.create(a[i])
+h= heightOfTree(tree.root)
+levelOrderTraversal(tree.root)
