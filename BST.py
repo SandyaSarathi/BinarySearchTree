@@ -71,13 +71,36 @@ def LowestCommonAncestral(root,v1,v2):
   else:
     return root
 
+def spiralTraversal(root):
+  o=[]
+  e=[]
+  e.append(root)
+  #print(root)
+  while (len(e)!=0 or len(o)!=0):
+    while(len(e)!=0):
+      c=e.pop()
+      print(c.data)
+      if c.right:
+        o.append(c.right)
+      if c.left:
+        o.append(c.left)
+    while(len(o)!=0):
+        c=o.pop()
+        print(c.data)
+        if c.left:
+            e.append(c.left)
+        if c.right:
+            e.append(c.right)
+  
+
 
 tree=BST()
 n=int(input())
 a=[int(i) for i in input().split()]
 for i in range(n):
   tree.create(a[i])
-h= heightOfTree(tree.root)
-levelOrderTraversal(tree.root)
-a=LowestCommonAncestral(tree.root,1,7)
-print(a.data)
+#h= heightOfTree(tree.root)
+#levelOrderTraversal(tree.root)
+#a=LowestCommonAncestral(tree.root,1,7)
+#print(a.data)
+spiralTraversal(tree.root)
